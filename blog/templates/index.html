@@ -1,0 +1,70 @@
+{% extends "base.html" %}
+ {% block title %}
+      <title>Blog Home</title>
+ {% endblock title %}
+{% block content %}
+  <div class="container">
+
+    <div class="row">
+
+      <!-- Blog Entries Column -->
+      <div class="col-md-8">
+          <br>
+
+        <h1 class="my-4">Blogs
+
+        </h1>
+    {% for post in post_list %}
+        <!-- Blog Post -->
+        <div class="card mb-4">
+<!--          <img class="card-img-top" src="http://placehold.it/750x300" alt="Card image cap">-->
+
+                  <div class="card-body">
+                    <h2 class="card-title">{{ post.title }}</h2>
+                    <p class="card-text">{{post.content|slice:":200" }}</p>
+                    <a href="{% url 'post_detail' post.id%}" class="btn btn-primary">Read More &rarr;</a>
+                  </div>
+                  <div class="card-footer text-muted">
+                        {{ post.created_on }}
+                  </div>
+        </div>
+          {% endfor %}
+
+        <!-- Blog Post -->
+
+
+        <!-- Blog Post -->
+
+      </div>
+
+      <!-- Sidebar Widgets Column -->
+      <div class="col-md-4">
+
+        <!-- Search Widget -->
+        <div class="card my-4">
+          <h5 class="card-header">Post Article</h5>
+          <div class="card-body">
+              <button class="btn btn-secondary" type="button"><a href="{% url 'postblog' %}">Post</a></button>
+              </span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Categories Widget -->
+
+
+        <!-- Side Widget -->
+        <div class="card my-4">
+          <h5 class="card-header">Side Widget</h5>
+          <div class="card-body">
+            You can put anything you want inside of these side widgets. They are easy to use, and feature the new Bootstrap 4 card containers!
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+    <!-- /.row -->
+
+  </div>
+{%endblock%}
